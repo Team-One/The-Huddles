@@ -1,0 +1,187 @@
+.utilities {
+  display: none;
+
+  @include fill-parent; //width: 100%;
+
+  @include tablet-desktop {
+    @include pad(($gutter*2) $gutter $gutter); // padding: 40px 20px;
+  }
+
+  &.dark {
+    background: #262626;
+    color: #b2b2b2;
+
+    .select, .input, input, button {
+      border-color: #7f7f7f;
+    }
+
+    input {
+      background-color: transparent;
+    }
+
+  }
+
+  &.light {
+    background: $light;
+    color: #7f7f7f;
+
+    .select, .input, input, button {
+      border-color: #b2b2b2;
+    }
+
+    .select {
+      background-color: $bright;
+    }
+  }
+
+  .col {
+    @include pad(0 $gutter ); //padding: 0 20px 20px;
+
+    & + .col {
+      border-left-color: #4c4c4c;
+
+      @include phone {
+        background: black;
+        border-top: 1px solid #4c4c4c; //em(1, $mobile-font-size)
+        border-left: none;
+      }
+    }
+  }
+
+  .close {
+    top: $gutter;
+//   //   margin-right: $gutter;
+
+    @include phone {
+      top: 0;
+    }
+  }
+
+  .form-title {
+    margin-bottom: $gutter;
+
+    @include phone {
+      margin-top: $gutter;
+    }
+  }
+
+  .select, button {
+    width: 30%;
+
+    & + .options {
+      width: 30%;
+      margin-top: -20px; // -$gutter
+    }
+  }
+
+  .select ~ .select,
+  .select ~ button {
+    margin-left: 3.775%;
+  }
+
+  button {
+    background: $blue;
+    border-color: $blue;
+    color: $bright;
+
+    &:hover {
+      background: $yellow;
+      color: $dark;
+    }
+  }
+
+  @include phone {
+    .select {
+      width: 48%;
+
+      & + .options {
+        width: 48%;
+      }
+
+      & ~ .select {
+        margin-left: 2.89%; //3
+      }
+    }
+
+    button {
+      width: 100%;
+      margin-left: 0 !important;
+    }
+  }
+
+}
+
+#check-in {
+  position: relative; //for #matches
+}
+
+#matches, .options {
+  .dark & {
+    background: darken(#262626, 4%);
+    border-color: #7f7f7f;
+  }
+
+  .light & {
+    background: darken($bright, 4%);
+    border-color: #b2b2b2;
+  }
+
+  li {
+    .dark &,
+    .light & {
+      &:hover {
+        background: $blue;
+        color: $bright;
+      }
+    }
+
+    .dark & {
+      border-bottom-color: #7f7f7f;
+    }
+
+    .light & {
+      border-bottom-color: #b2b2b2;
+    }
+  }
+}
+
+#matches, #matches2 {
+  display: none;
+  @extend .options;
+
+  margin-top: -18px; // -$gutter
+  width: 15rem;
+
+  z-index: 15; //in case multiple drop downs are open...
+}
+
+#search-form {
+
+  @include tablet-desktop {
+    padding: $gutter;
+
+    .dark & {
+      background: #3f3f3f;
+    }
+  }
+
+  .light & {
+    background: #ccc;
+  }
+
+  input {
+    margin-top: 11px;
+    margin-bottom: 11px;
+  }
+
+  button {
+    display: none;
+  }
+
+  @include phone {
+    input[type=search] {
+      margin-top: 0;
+      margin-bottom: $gutter;
+    }
+  }
+}

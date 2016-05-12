@@ -1,0 +1,75 @@
+// debug Media Queries
+@mixin media-debug($message, $color: rgba(0 ,0 ,0, 0.3), $font-color: white ) {
+  // http://codepen.io/niklas-r/pen/sHaAy
+  &::before {
+    font: 300 1em/1.2em 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    padding: .5em 0;
+    content: $message;
+    display: block;
+    text-align: center;
+    background: #{$color};
+    color: #{$font-color};
+    text-shadow: 0 1px grayscale(invert($font-color));
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: $z-debug;
+  }
+} // end debug Media Queries
+
+@mixin phone {
+    @media screen and (max-device-width: $mobile-max),
+           screen and (max-width: $mobile-max) {
+        @content;
+    }
+}
+
+@mixin phone-retina {
+    // @media only screen and (max-device-width : $mobile-max) and (-webkit-min-device-pixel-ratio : 1.6) { //must be greater than 1.5
+    @include media($phone-retina) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    body.tablet & {
+    // @include media($tablet) {
+        @content;
+
+
+    }
+}
+
+@mixin tablet-desktop { //hybrid
+    // @media only screen and (min-width: 768px) and (min-device-width: 768px) {
+    @include media($tablet-desktop) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @content;
+}
+
+@mixin vertCenter {
+ position:absolute;
+ top: 50%;
+ -webkit-transform: translateY(-50%);
+ -ms-transform: translateY(-50%);
+ transform: translateY(-50%);
+}
+
+// @mixin double {
+//     @content;
+
+//     @include media($phone-retina) {
+//         @content;
+//     }
+// }
+
+// Functions
+
+// @function double($variable){
+//  @return $variable *2;
+// }

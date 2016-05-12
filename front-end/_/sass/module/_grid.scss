@@ -1,0 +1,235 @@
+.rooms {
+  text-align: justify;
+  font-size: 0;
+}
+
+.rooms > li {
+  display: inline-block;
+  width: 15%;
+  //margin-bottom: 2%; /* should be limited to .mix, probably don't want this on .gap */
+  font-size: 16px; // https://mixitup.kunkalabs.com/learn/tutorial/responsive-grids/#inline-block #5
+
+  @include phone {
+    width: 33%;
+  }
+
+  .tablet & { // https://netguru.co/blog/posts/7-sass-features-you-should-be-familiar-with
+    width: 18%;
+  }
+
+  &.mix {
+    //@extend .floorplan;
+
+    margin-bottom: $gutter/2;
+    @include pad(em(6, $font-size) $gutter/2 12%);
+    background: $bright url(img/room/table-4.svg) no-repeat center;
+    background-position-y: em(25, $font-size);
+    background-size: 90%;
+
+    border-top: 6px solid $gray;
+
+    @include phone-retina {
+      background-position-y: 3.8em;
+      border-top-width: 12px;
+    }
+
+    @include interactive; // @extend %interactive
+
+@include tablet-desktop {
+    @include transition (background .8s $ease-out-quad, margin 1s); //http://bourbon.io/docs/#timing-functions
+}
+
+    display: none; /* needed for mixitup.kunkalabs.com/ */
+
+    @include phone {
+      margin-bottom: 0;
+      padding-bottom: 26%;
+    }
+
+    .tablet & { // https://netguru.co/blog/posts/7-sass-features-you-should-be-familiar-with
+      padding-bottom: 15%;
+    }
+
+    .users {
+      display: none;
+    }
+  }
+
+  &.gap {
+
+  }
+
+  span {
+    @extend h4;
+
+    @include phone-retina {
+      font-size: 40px;
+    }
+  }
+
+  &.available {
+    border-top-color: $available-color;
+  }
+
+  &.occupied {
+    border-top-color: $occupied-color;
+  }
+
+  &.purgatory {
+    border-top-color: $purgatory-color;
+  }
+
+  &:hover {
+    &.available {
+      border-top-color: tint($available-color, 25%);
+    }
+
+    &.occupied {
+      border-top-color: tint($occupied-color, 25%);
+    }
+
+    &.purgatory {
+      border-top-color: tint($purgatory-color, 25%);
+    }
+  }
+
+@include tablet-desktop {
+  &.unfocus {
+    background-color: shade($bright, 5%);
+  }
+}
+
+  //@include transition(margin 1s);
+
+  // @include transition-property(margin-bottom);
+  // @include transition-duration(1.0s);
+  // @include transition-timing-function(ease-in);
+  // @include transition-delay(0.5s);
+
+  &.details-open {
+    position: relative;
+    // margin-bottom: 30px; this animates, not really what we want
+
+    &:after {
+      content: "";
+      width: 0;
+      height: 0;
+      border-left: 18px solid transparent;
+      border-right: 18px solid transparent;
+      border-bottom: 17px solid $bright; //rgba(#00234a, .9); //#00234a;
+
+      position: absolute;
+      bottom: -29px;
+      left: 50%;
+      margin-left: -18px; //normally this is half...
+
+      @include phone {
+        bottom: 0;
+        border-bottom-color: $light;
+      }
+
+      @include phone-retina {
+        border-left-width: 36px;
+        border-right-width: 36px;
+        border-bottom-width: 35px;
+        margin-left: -36px; //normally this is half...
+      }
+    }
+    //outline: 1px solid rgba(#00234a, .9); //#00234a;;
+
+// @include media(min-width 961px) {
+//     margin-bottom: 625px; //65%
+// }
+// @include media(min-width 768px max-width 960px) {
+//     margin-bottom: 800px;
+// }
+// @include media(max-width 767px) {
+//     //margin-bottom: 70%; the details viw is not a fixed height...
+}
+
+//     .details {
+//       display: block;
+//       position: absolute;
+//       left: 0;
+
+// @include media(min-width 961px) {
+//       margin-top: 150px; //961+
+//       height: 550px;
+// }
+// @include media(min-width 768px max-width 960px) {
+//       margin-top: 15%; // 960-768
+//       height: 750px;
+// }
+// @include media(max-width 767px) {
+//       margin-top: 30%; // -767
+//       min-height: 100px;
+//       height: 20%;
+// }
+
+//       width: 100%;
+//     }
+//   }
+
+
+} // .rooms li
+
+.rooms .category-1, .rooms li.category-1 {
+  background-image: url(img/room/standing.svg);
+}
+.rooms .category-2, .rooms li.category-2 {
+  background-image: url(img/room/lounge.svg);
+}
+.rooms .category-3, .rooms li.category-3 {
+  background-image: url(img/room/table-4.svg);
+  &.opt-b {
+    background-image: url(img/room/table-6.svg);
+  }
+}
+.rooms .category-4, .rooms li.category-4 {
+  background-image: url(img/room/open.svg);
+}
+
+.floorplan {
+  padding-bottom: 81%;
+
+  background-color: $bright;
+  background-repeat: no-repeat;
+  background-size: 90%;
+  background-position: center;
+}
+
+.standing {
+  @extend .category-1;
+}
+.lounge {
+  @extend .category-2;
+}
+.table, .table-4, .table-6 {
+  @extend .category-3;
+}
+.open {
+  @extend .category-4;
+}
+
+
+.fail .error {
+  font-size: 16px;
+}
+
+.backToTop {
+  position: absolute;
+  right: 0;
+}
+
+@include phone {
+  #grid-north {
+    padding-top: em(70); // accounts for retina
+  }
+
+  .fancy {
+    width: em(220); // accounts for retina
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+  }
+}

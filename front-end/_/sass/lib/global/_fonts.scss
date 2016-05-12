@@ -1,0 +1,21 @@
+// @import must be at top of file, otherwise CSS will not work
+@import url("//hello.myfonts.net/count/29d649");
+
+
+@include font-face(Avenir, 'fonts/29D649_6_0', 200); // AvenirLTStd-Light
+// @include font-face(Avenir, 'fonts/29D649_A_0', 200, italic); // AvenirLTStd-LightOblique
+
+// @include font-face(Avenir, 'fonts/29D649_0_0', 300); // AvenirLTStd-Book
+// @include font-face(Avenir, 'fonts/29D649_3_0', 300, italic); // AvenirLTStd-BookOblique
+
+// @include font-face(Avenir, 'fonts/29D649_8_0', 400, normal); // AvenirLTStd-Roman
+// @include font-face(Avenir, 'fonts/29D649_7_0', 400, italic); // AvenirLTStd-Oblique
+
+// @include font-face(Avenir, 'fonts/29D649_5_0', 500); // AvenirLTStd-Medium
+// @include font-face(Avenir, 'fonts/29D649_1_0', 500, italic); // AvenirLTStd-MediumOblique
+
+@include font-face(Avenir, 'fonts/29D649_B_0', bold); // AvenirLTStd-Heavy
+// @include font-face(Avenir, 'fonts/29D649_9_0', bold, italic); // AvenirLTStd-HeavyOblique
+
+@include font-face(Avenir, 'fonts/29D649_2_0', 900); // AvenirLTStd-Black
+// @include font-face(Avenir, 'fonts/29D649_2_0', 900, italic); // AvenirLTStd-BlackOblique

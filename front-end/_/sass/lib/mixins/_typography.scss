@@ -1,0 +1,129 @@
+// https://github.com/thoughtbot/bitters/blob/master/app/assets/stylesheets/_typography.scss
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $header-font-family;
+  line-height: $line-height;
+  margin: 0;
+  text-rendering: optimizeLegibility; // Fix the character spacing for headings
+}
+
+h1, .h1 {
+  font-weight: 900;
+  font-size: em($h1, $font-size);
+  text-transform: uppercase;
+
+  @include phone {
+    font-size: em($mobile-h1, $font-size);
+  }
+}
+
+h2, .h2 {
+  font-size: em($h2, $font-size);
+  font-weight: bold;
+}
+
+h3, .h3 {
+  font-size: em($h3, $font-size);
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+h4, .h4 {
+  font-size: em($h4, $font-size);
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+h5, .h5 {
+  font-size: em($h5, $font-size);
+  font-weight: bold;
+}
+
+// p {
+//   margin: 0 0 ($base-line-height * .5);
+// }
+
+a {
+  color: $link-color;
+  // text-decoration: none;
+  // @include transition(color 0.1s linear);
+
+  &:hover {
+    color: $link-hover-color;
+  }
+
+  &:active, &:focus {
+    color: $link-hover-color;
+    outline: none;
+  }
+}
+
+.form-title {
+  font-weight: normal;
+  text-transform: capitalize;
+}
+
+.ruled { // http://css-tricks.com/line-on-sides-headers/
+  text-align: center;
+  @include pad(em(24) 0);
+  overflow: hidden;
+
+  span {
+    display: inline-block;
+    position: relative;
+
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      height: 5px;
+      // border-top: 1px solid; // double
+      border-bottom: em(2) solid; // accounts for retina
+      top: 0;
+      width: em(600);
+
+      @include phone-retina {
+        margin-top: 20px;
+      }
+    }
+
+    &:before {
+      right: 100%;
+      margin-right: em(15); // accounts for retina
+    }
+
+    &:after {
+      left: 100%;
+      margin-left: em(15); // accounts for retina
+    }
+  }
+}
+
+// hr {
+//   border-bottom: 1px solid $base-border-color;
+//   border-left: none;
+//   border-right: none;
+//   border-top: none;
+//   margin: $base-line-height 0;
+// }
+
+// img {
+//   margin: 0;
+//   max-width: 100%;
+// }
+
+// hgroup {
+//   margin-bottom: $base-line-height / 2;
+// }
+
+// .options .option-heading {
+//   font-weight: bold;
+//   text-transform: uppercase;
+// }
+
+.tagline {
+  font-weight: 900;
+  font-size: em(18);
+  line-height: $line-height;
+  text-transform: uppercase;
+}

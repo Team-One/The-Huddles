@@ -1,0 +1,69 @@
+.legend {
+    width: 100%;
+    height: 2rem;
+
+    // Removing legend
+    display: none;
+
+
+    .list-wrap {
+        width: 80%;
+        display: block;
+        margin: 2rem auto;
+        text-align: center;
+
+        }
+
+    .legend-wrap {
+        position: relative;
+        display: inline-block;
+        text-align: center;
+
+        .circle {
+
+            display: inline-block;
+            height: 2rem;
+            width: 2rem;
+            border-radius: 50%;
+            text-align: center;
+
+
+
+        }
+
+        .open {
+            border: .5rem solid seagreen;
+        }
+
+        .recent {
+            border: .5rem solid gold;
+
+
+        }
+
+        .occupied {
+            border: .5rem solid crimson;
+        }
+
+        p {
+            display: inline-block;
+            margin-right: 2rem;
+            margin-left: 1rem;
+            white-space: nowrap;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+
+
+
+
+        }
+
+
+
+    }
+
+
+
+}
+

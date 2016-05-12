@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<!--[if IE 9]>         <html class="no-js ie9 lt-ie10"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=9,chrome=1'><![endif]-->
+
+  <meta name="viewport" content="user-scalable=no,minimal-ui">
+
+  <title>The Huddles | Collaborate At Will</title>
+
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="author" content="alyda@me.com">
+
+  <link rel="shortcut icon" type="image/x-icon" href="http://teamone-usa.com/favicon.ico">
+
+  <base href="">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+  <link rel="stylesheet" href="_/css/huddle.css">
+
+  <!-- matchMedia polyfill needed for IE8/9, iOS<5, Opera Mini, Android<3 http://caniuse.com/#search=matchMedia -->
+  <script src="_/js/vendor/paulirish/matchMedia.min.js"></script>
+  <script>function resizeThrottler(){resizeTimeout||(resizeTimeout=setTimeout(function(){resizeTimeout=null,resize()},66))}function resize(){document.querySelector("body"),console.log(window.innerWidth),device=window.matchMedia("(max-device-width: 767px)").matches?"phone":window.matchMedia("(min-device-width: 768px)").matches&&window.matchMedia("(max-device-width: 959px)").matches?"desktop":"desktop",console.log(device)}function DOMContentLoaded(){var a=document.body;a.classList?a.classList.add(device):a.className+=" "+device}var device="unknown";window.addEventListener("resize",resizeThrottler,!1);var resizeTimeout;resize(),document.addEventListener("DOMContentLoaded",DOMContentLoaded,!1);</script>
+  <!--script src="http://www.modernizr.com/downloads/modernizr-latest.js"></script-->
+  <script src="_/js/modernizr-custom.js"></script>
+
+
+  <!-- start Mixpanel --><script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f)}})(document,window.mixpanel||[]);
+mixpanel.init("c97d50704710587b31edfd5fa0cabe06");</script><!-- end Mixpanel -->
+
+</head>
+<body>
+
+<!--[if lt IE 9]>
+  <p>You are using an outdated browser. Please <a href="http://browsehappy.com/">upgrade</a> to a different browser to experience this site.</p>
+<![endif]-->
+
+  <header id="header"> <!-- .page-header -->
+    <!--
+            $$\     $$\ $$\
+            $$ |    \__|$$ |
+$$\   $$\ $$$$$$\   $$\ $$ | $$$$$$$\
+$$ |  $$ |\_$$  _|  $$ |$$ |$$  _____|
+$$ |  $$ |  $$ |    $$ |$$ |\$$$$$$\
+$$ |  $$ |  $$ |$$\ $$ |$$ | \____$$\
+\$$$$$$  |  \$$$$  |$$ |$$ |$$$$$$$  |
+ \______/    \____/ \__|\__|\_______/  -->
+
+      <nav class="utilities dark">
+        <span class="close"></span>
+
+        <div class="container">
+          <h2 hidden>Utilities</h2>
+
+          <div class="col">
+          <h3 class="form-title">Check-In</h3>
+          <form id="check-in">
+            <input id="name-input" type="text" placeholder="Name" tabindex="0" required>
+            <ul id="matches"></ul>
+
+            <span class="select" style="margin-left:0" data-selected="">North Side</span> <!-- tabindex="1" -->
+            <ul id="wing" class="options">
+              <li class="option" value="north">North Side</li>
+              <li class="option" value="south">South Side</li>
+            </ul>
+
+            <span id="room-number" class="select" data-selected required>Room #</span> <!-- tabindex="2" -->
+            <ul id="room-ids" class="options" style="left: 34.8%">
+              <li class="option-heading" id="northHeader">North</li>
+              <li class="option-heading" id="southHeader">South</li>
+
+            </ul>
+
+            <button id="checkin-form-button">Submit</button> <!-- type="submit" is default, shouldn't have to declare -->
+          </form>
+          </div>
+
+          <div class="col">
+          <h3 class="form-title">Search</h3>
+          <form id="search-form">
+            <input type="search" placeholder="Find Someone">
+            <ul id="matches2"></ul>
+            <button>Submit</button> <!-- type="submit" is default, shouldn't have to declare -->
+          </form>
+          </div>
+        </div> <!-- /.container -->
+      </nav>
+
+    <div class="container">
+
+      <div class="banner">
+        <h1 class="logo"><span class="light">The</span> Huddles</h1>
+        <span class="tagline">Collaborate at will</span>
+      </div>
+
+      <div class="toggle">
+        <span>toggle</span>
+      </div>
+
+    </div> <!-- /.container -->
+
+
+
+  </header>
+
+  <div id="confirm_popup" class="popUp">
+    <h3>Checked in successfully!</h3>
+    <!-- <h4>Share this link: </h4> -->
+    <button class="confirm_popup_close">Close</button>
+  </div>
+
+  <div id="search_popup" class="popUp">
+    <p id="searchResults"></p>
+    <button class="search_popup_close">Close</button>
+  </div>
+
+  <div id="document" role="document">
+
+
+
+<!--
+
+$$$$$$\$$$$\   $$$$$$\   $$$$$$\
+$$  _$$  _$$\  \____$$\ $$  __$$\
+$$ / $$ / $$ | $$$$$$$ |$$ /  $$ |
+$$ | $$ | $$ |$$  __$$ |$$ |  $$ |
+$$ | $$ | $$ |\$$$$$$$ |$$$$$$$  |
+\__| \__| \__| \_______|$$  ____/
+                        $$ |
+                        $$ |
+                        \__|      -->
+
+    <div class="subway mobilehide">
+      <div id="draggable" class="container">
+        <h3 hidden>Subway Diagram</h3>
+        <span class="marker north">North Side</span>
+        <ul class="north roomCont">
+            
+        </ul>
+        <span class="marker kitchen">Kitchen</span>
+        <span class="marker line"></span>
+        <span class="marker front-desk">Front Desk</span>
+        <ul class="south roomCont">
+
+        </ul>
+        <span class="marker south">South Side</span>
+        <span class="marker all-agency">All Agency</span>
+      </div> <!-- /.container -->
+    </div> <!-- /.subway -->
+
+
+    <!-- <div class="container"> -->
+      <h3 hidden>Grid</h3>
+
+      <div class="legend">
+        <div class="list-wrap">
+          <div class="legend-wrap"><div class="circle open"></div><p>Open</p></div>
+          <div class="legend-wrap"><div class="circle recent"></div><p>Recently Open</p></div>
+          <div class="legend-wrap"><div class="circle occupied"></div><p>Occupied</p></div>
+        </div>
+      </div>
+
+<!--
+                               $$\
+                               $$ |
+ $$$$$$$\  $$$$$$\   $$$$$$\ $$$$$$\
+$$  _____|$$  __$$\ $$  __$$\\_$$  _|
+\$$$$$$\  $$ /  $$ |$$ |  \__| $$ |
+ \____$$\ $$ |  $$ |$$ |       $$ |$$\
+$$$$$$$  |\$$$$$$  |$$ |       \$$$$  |
+\_______/  \______/ \__|        \____/ -->
+
+      <div class="filters">
+
+        <!--mobile only-->
+        <div class="mobileonly" style="background: white">
+          <span class="select">Filter Rooms</span>
+          <ul class="views">
+            <li class="grid selected"><span class="dots">view as grid</span></li>
+            <li class="map"><span class="pin">view as map</span></li>
+          </ul>
+        </div>
+
+        <div class="container">
+          <span class="h4 filter-title">Show Only:</span>
+
+          <!-- We can add an unlimited number of "filter groups" using the following format: -->
+          <ul class="status">
+            <li class="avail-tog filter special" data-filter=".available">Available</li>
+            <li class="all-tog reset selected">All</li>
+          </ul>
+
+          <span class="h4 filter-title mobileonly" style="clear:right">Filter by:</span><!--mobile only-->
+
+          <ul class="type" id="filtersContainer">
+          </ul>
+
+          <span class="mobileonly done">Done</span>
+
+        </div> <!-- /.container -->
+      </div> <!-- /.filters -->
+
+      <div id="grid-north" class="container">
+        <div class="fancy"><h4 class="ruled"><span>North Side</span></h4></div>
+        <ul class="rooms north">
+
+          <!-- https://mixitup.kunkalabs.com/learn/tutorial/responsive-grids/#-gap--elements -->
+          <li class="gap"></li>
+          <li class="gap"></li>
+          <li class="gap"></li>
+          <li class="gap"></li>
+          <li class="gap"></li>
+          <p class="error">No rooms were found matching the selected filters.</p>
+        </ul>
+      </div> <!-- /.container -->
+
+<!--
+
+$$\            $$$$$$\
+\__|          $$  __$$\
+$$\ $$$$$$$\  $$ /  \__|$$$$$$\
+$$ |$$  __$$\ $$$$\    $$  __$$\
+$$ |$$ |  $$ |$$  _|   $$ /  $$ |
+$$ |$$ |  $$ |$$ |     $$ |  $$ |
+$$ |$$ |  $$ |$$ |     \$$$$$$  |
+\__|\__|  \__|\__|      \______/ -->
+
+      <div class="details light"> <!-- dark -->
+        <div class="container">
+
+          <header id="roomDetails" class="details-header">
+            <span class="close"></span>
+            <span class="h2 room">B-1</span>
+            <span class="h3"><span class="location">North Side</span> <span class="mobilehide">//</span> <span class="details-type">Lounge</span></span>
+
+            <span class="check-in button mobileonly" style="margin-top:20px">Check-In</span>
+
+
+          </header>
+
+          <div class="col col1">
+            <figure class="floorplan"></figure>
+            <span class="check-in button mobilehide">Check-In</span>
+          </div>
+
+          <div class="col col2"> <!-- style="margin-left:45px" -->
+
+            <ul class="amenities col">
+              <li class="h3">Room Details:</li>
+            </ul>  <!-- /.amenities -->
+
+            <ul class="occupants col">
+              <li class="h3">Occupants:</li>
+            </ul> <!-- /.occupants -->
+
+          </div>
+
+        </div> <!-- /.container -->
+      </div> <!-- /.details -->
+
+      <div id="grid-south" class="container">
+
+        <a class="mobileonly backToTop" href="#top" title="Return to the top of this page">return to top</a>
+        <div class="fancy"><h4 class="ruled"><span>South Side</span></h4></div>
+
+        <ul class="rooms south">
+
+
+          <!-- https://mixitup.kunkalabs.com/learn/tutorial/responsive-grids/#-gap--elements -->
+          <li class="gap"></li>
+          <li class="gap"></li>
+          <li class="gap"></li>
+          <li class="gap"></li>
+          <p class="error">No open rooms were found matching the selected filters.</p>
+        </ul>
+      </div> <!-- /.container -->
+
+  </div> <!-- /#document -->
+
+  <footer id="footer">
+    <!--
+ $$$$$$\                      $$\
+$$  __$$\                     $$ |
+$$ /  \__|$$$$$$\   $$$$$$\ $$$$$$\
+$$$$\    $$  __$$\ $$  __$$\\_$$  _|
+$$  _|   $$ /  $$ |$$ /  $$ | $$ |
+$$ |     $$ |  $$ |$$ |  $$ | $$ |$$\
+$$ |     \$$$$$$  |\$$$$$$  | \$$$$  |
+\__|      \______/  \______/   \____/ -->
+
+    <div class="container">
+      <p class="copy">&copy; 2016 Team One USA</p>
+      <small class="message"></small>
+      <!-- <b>Latest MQTT message:</b> <small id="message">no message recieved</small> -->
+    </div>
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="_/js/vendor/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" src="_/js/vendor/jquery.mixitup.min.js"></script>
+    <!-- socket.io for communication -->
+    <script type="text/javascript" src="_/js/vendor/socket.io.min.js"></script>
+
+    <script type="text/javascript">
+      var huddlerooms = [], users = [], lastVal = "", findCache, lastVal2 = "", findCache2,
+          socket = io.connect('http://solr.t1p1.com:3000'),
+          nRooms = [], sRooms = [];
+
+      $(function() {
+
+        var availableToggle = false;
+        $('.avail-tog').on('click', function() {
+          availableToggle ? availableToggle = false : availableToggle = true;
+          console.log(availableToggle);
+        });
+
+        $('.all-tog').on('click', function() {
+          if (availableToggle) { availableToggle = false;}
+        });
+        function buildRooms(rooms) {
+          var total = rooms.rooms.length;
+
+          for(i = 0; i < total;++i) {
+            var room = rooms.rooms[i]
+
+            huddlerooms.push({
+              id: room.internal_name,
+              name: room.display_name,
+              features: rooms.categories[room.category_id].features,
+              overrides: room.override
+            });
+            
+            // Hacky way, should have a side attribute for this
+            if(room.display_name.indexOf("N") !== -1) {
+              // $(this).html('B-1');
+              // console.log(room.display_name)
+              nRooms.push({
+                id: room.internal_name,
+                name: room.display_name,
+                features: rooms.categories[room.category_id].features,
+                overrides: room.override
+              });
+              if($("#room-ids .northRoom").length == 0)
+                $("#room-ids #northHeader").after('<li class="option northRoom" value="'+room.internal_name+'">'+room.display_name+'</li>');
+              else
+                $("#room-ids .northRoom:last").after('<li class="option northRoom" value="'+room.internal_name+'">'+room.display_name+'</li>');
+              $("#draggable .north.roomCont").append('<a href="#'+room.display_name+'"><li id="'+room.display_name+'" class="room-'+room.internal_name+' category-'+room.category_id+'"><span>'+room.display_name+'</span></li></a>');
+              if($("#grid-north .rooms .mix").length == 0)
+               $("#grid-north .rooms").prepend('\
+                <li id="'+room.display_name+'" class="room-'+room.internal_name+' category-'+room.category_id+' mix">\
+                  <span>'+room.display_name+'</span>\
+                  <ul class="users"></ul>\
+                </li>\
+                ')
+              else
+                $("#grid-north .rooms .mix:last").after('\
+                  <li id="'+room.display_name+'" class="room-'+room.internal_name+' category-'+room.category_id+' mix">\
+                  <span>'+room.display_name+'</span>\
+                  <ul class="users"></ul>\
+                </li>\
+                ')
+            } else {
+              sRooms.push({
+                id: room.internal_name,
+                name: room.display_name,
+                features: rooms.categories[room.category_id].features,
+                overrides: room.override
+              });
+              if($("#room-ids .southRoom").length == 0)
+                $("#room-ids #southHeader").after('<li class="option southRoom" value="'+room.internal_name+'">'+room.display_name+'</li>');
+              else
+                $("#room-ids .southRoom:last").after('<li class="option southRoom" value="'+room.internal_name+'">'+room.display_name+'</li>');
+              $("#draggable .south.roomCont").append('<a href="#'+room.display_name+'"><li id="'+room.display_name+'" class="room-'+room.internal_name+' category-'+room.category_id+'"><span>'+room.display_name+'</span></li><a/>')
+              if($("#grid-south .rooms .mix").length == 0)
+               $("#grid-south .rooms").prepend('\
+                <li id="'+room.display_name+'" class="room-'+room.internal_name+' category-'+room.category_id+' mix">\
+                  <span>'+room.display_name+'</span>\
+                  <ul class="users"></ul>\
+                </li>\
+                ')
+              else
+                $("#grid-south .rooms .mix:last").after('\
+                  <li id="'+room.display_name+'" class="room-'+room.internal_name+' category-'+room.category_id+' mix">\
+                  <span>'+room.display_name+'</span>\
+                  <ul class="users"></ul>\
+                </li>\
+                ')
+            }
+            $('.rooms #'+room.display_name).data('features', rooms.categories[room.category_id].features)
+            $('.rooms #'+room.display_name).data('overrides', room.override)
+
+            $('.check-in').click(function(){
+              // console.log($('.roomDetails').find('h2')); 
+
+              $('.utilities').show()
+              $('#name-input').focus()
+            });
+
+            // $('.roomCont li#'+room.display_name+ 'a').click(function(){
+            //   console.log('what up');
+            //   $('html, body').delay(500).animate({ scrollTop: $('.details.light').offset().top}, 1000);
+            // });
+
+
+
+            //features( room.display_name, rooms.categories[room.category_id].features, room.override )
+
+          }
+
+          // Loop categories
+          for(category_id in rooms.categories) {
+            $("#filtersContainer").append('<li class="filter" data-filter=".category-'+category_id+'">'+rooms.categories[category_id].display_name+'</li>')
+          }
+
+        } // buildRooms()
+
+        // function features(id, features, overrides) {
+        //   console.log(id)
+        //   console.log(features)
+        //   //console.log(features.length)
+
+        //   if( overrides ) {
+        //     console.log(overrides)
+        //     //console.log(overrides.length)
+        //   }
+
+        //   $('#N-1').data('features', features)
+
+        //   //for( j = 0; j < features.length; j++) {
+        //     //$('#'+id).data(features[j], true)
+        //     //console.log(" $('#N-1').data("+data(features[j]+",true) ")
+        //   //}
+        // }
+
+        // Get rooms json and populate HTML
+        $.ajax({
+          url: 'rooms.json',
+          async: false,
+          dataType: 'json',
+          success: function (response) {
+            buildRooms(response);
+            //console.log(huddlerooms)
+          }
+        }); // $.ajax()
+
+        // Get users
+        $.ajax({
+          url: 'updatedUsers.json',
+          dataType: 'json',
+          success: function (response) {
+            for (var key in response) {
+              users.push(response[key]['first_last'])
+            }
+
+            findCache = users;
+            findCache2 = users;
+
+            // console.log(users)
+          }
+        });
+
+        socket.on('mqtt', function (msg) {
+          //var message = msg.topic;
+          //var timestamp = Math.round((new Date()).getTime() / 1000);
+          $('#message').html(msg.topic + ', ' + msg.flag);
+          // $('#room-'+msg.topic+' .log').html('(Switch value: ' + msg.flag + ')');
+
+          if (msg.flag == 2) { // OCCUPIED
+            $('.room-'+msg.topic).removeClass('available purgatory').addClass('occupied')
+
+            // console.log("now occupied: room-"+msg.topic)
+
+            //if items have been filtered, filter again. but first, check to see if state has changed
+            $('.subway li').hasClass('dim') ?
+              // console.log('filter again, now occupied') : null)
+              $('.rooms').mixItUp('filter', currentFilters, updateSubway) : null ;
+
+          } else if(msg.flag == 1) { // PURGATORY
+            $('.room-'+msg.topic).removeClass('occupied available').addClass('purgatory')
+
+            // console.log("now in purgatory: room-"+msg.topic+" no need to filter again?")
+
+          } else { // AVAILABLE
+            $('.room-'+msg.topic).removeClass('occupied purgatory').addClass('available')
+            $('.room-'+msg.topic+' .users').empty() //remove all users from room
+
+            // console.log("now available: room-"+msg.topic)
+            $('.room-'+msg.topic+' .users').css('border', '') //no more found users
+            $('.room-'+msg.topic).removeClass('person-found')
+
+            //if items have been filtered, filter again
+            $('.subway li').hasClass('dim') ?
+              $('.rooms').mixItUp('filter', currentFilters, updateSubway) : null ;
+          }
+        }); // socket.on()
+
+        socket.on('checkin', function (msg) {
+          //console.log(msg)
+
+          //console.log( 'add '+sanitize(msg.user)+' to .room-'+msg.room )
+          $('.rooms .room-'+msg.room+' .users').append('<li>'+sanitize(msg.user)+'</li>');
+          // $("#room-"+msg.room+" .users ul").append("<li>"+sanitize(msg.user)+"</li>");
+        });
+
+/*
+              $$\
+              \__|
+$$$$$$\$$$$\  $$\ $$\   $$\
+$$  _$$  _$$\ $$ |\$$\ $$  |
+$$ / $$ / $$ |$$ | \$$$$  /
+$$ | $$ | $$ |$$ | $$  $$<
+$$ | $$ | $$ |$$ |$$  /\$$\
+\__| \__| \__|\__|\__/  \__| */
+
+        // To keep our code clean and modular, all custom functionality will be contained inside a single object literal called "buttonFilter".
+
+        var currentFilters,
+            buttonFilter = {
+
+              // Declare any variables we will need as properties of the object
+
+              $filters: null,
+              $reset: null,
+              groups: [],
+              outputArray: [],
+              outputString: '',
+
+              // The "init" method will run on document ready and cache any jQuery objects we will need.
+
+              init: function(){
+                var self = this; // As a best practice, in each method we will asign "this" to the variable "self" so that it remains scope-agnostic. We will use it to refer to the parent "buttonFilter" object so that we can share methods and properties between all parts of the object.
+
+                self.$filters = $('.filters');
+                self.$reset = $('.reset');
+                self.$container = $('.rooms');
+
+                self.$filters.find('.type li, .special').each(function(){
+                  self.groups.push({
+                    $buttons: $(this), //.find('.filter')
+                    active: ''
+                  });
+                });
+
+                self.bindHandlers();
+              },
+
+              // The "bindHandlers" method will listen for whenever a button is clicked.
+
+              bindHandlers: function(){
+                var self = this;
+
+                // Handle filter clicks
+
+                self.$filters.on('click', '.filter', function(e){
+                  e.preventDefault();
+
+                  var $button = $(this);
+
+                  // If the button is selected, remove the selected class, else make selected and deactivate others.
+
+                  $button.hasClass('selected') ?
+                    $button.removeClass('selected') :
+                    $button.addClass('selected'); //.siblings('.filter').removeClass('selected')
+
+                  self.parseFilters();
+
+                  $button.hasClass('special') ?
+                    self.$reset.toggleClass('selected') : null ;
+
+                });
+
+                // Handle reset click
+
+                self.$reset.on('click', function(e){
+                  var $reset = $(this);
+
+                  self.$filters.find('.filter[data-filter=".available"]').removeClass('selected');
+
+                  self.parseFilters();
+
+                  // check state of .special
+                  $(' li.special ').hasClass('selected') ?
+                    $reset.removeClass('selected') :
+                    $reset.addClass('selected') ;
+                  //$reset.toggleClass('selected') // this should be tied to a callback, not to each click. we need to know if this button changed the resultset
+                });
+
+                // watch for changes in animation
+                self.$container.on('mixStart', function(e, state){
+                  //console.log('started')
+                  //$(this).addClass('mixing')
+                  // if details is open, reattach to correct position.
+                  // if mix item with class of details-open is now hidden, remove class and detach details
+
+                  if ( $('.rooms').has('.details').length > 0 ) {
+                    console.log('hide details')
+                    hideDetails()
+                  }
+
+
+                })
+                self.$container.on('mixEnd', function(e, state){
+                  //console.log('finished')
+                  //$(this).removeClass('mixing')
+                  // if details was hidden via js (and not by css w/ parent class of mixing) then unhide
+
+                  // if ( $('.rooms').has('.details').length > 0 ) {
+                  //   console.log('show details')
+                  // }
+
+
+                })
+              },
+
+              // The parseFilters method checks which filters are selected in each group:
+
+              parseFilters: function(){
+                var self = this;
+
+                // loop through each filter group and grap the selected filter from each one.
+
+                for(var i = 0, group; group = self.groups[i]; i++){
+                  // console.log(group.$buttons.filter('.selected').data('filter'))
+                  group.active = group.$buttons.filter('.selected').data('filter') || '';
+                }
+
+                self.concatenate();
+              },
+
+              // The "concatenate" method will crawl through each group, concatenating filters as desired:
+
+              concatenate: function(){
+                var self = this;
+
+                self.outputString = ''; // Reset output string
+
+                for(var i = 0, count=0, flag=false, group; group = self.groups[i]; i++){
+                  // console.log(i+': '+group.active)
+                  // self.outputString += group.active; // EXCLUSIVE
+
+                  if ( group.active == ".available" ) {
+                    // self.outputString += group.active;
+                    flag = true // this only works because '.active' happens to be first. if it were last or somewhere else in the list, the final loos would have to check for this flag and then modify the self.outputString accordingly
+                  } else if( group.active != ""){
+                    // console.log('count:'+count)
+                    if(count == 0){ // INCLUSIVE
+                      if(flag){
+                        self.outputString += group.active+'.available';
+                      } else {
+                        self.outputString += group.active;
+                      }
+
+                    } else {
+                      if(flag){
+                        self.outputString += ', '+group.active+'.available';
+                      } else {
+                        self.outputString += ', '+group.active;
+                      }
+
+                    }
+                    count++;
+                  }
+
+                }
+
+                // If the output string is empty, show all rather than none:
+
+                !self.outputString.length && (self.outputString = 'all');
+
+                // console.log(self.outputString);
+
+                // ^ we can check the console here to take a look at the filter string that is produced
+
+                // Send the output string to MixItUp via the 'filter' method:
+
+                if(self.$container.mixItUp('isLoaded')){
+                  self.$container.mixItUp('filter', self.outputString, updateSubway); //don't pass the 'state' variable, it is magically attached
+                }
+
+                if (self.outputString === 'all' && availableToggle) {
+                  console.log('fire!');
+                  self.$container.mixItUp('filter', '.category-1.available, .category-2.available, .category-3.available, .category-4.available', updateSubway); //don't pass the 'state' variable, it is magically attached
+                }
+              }
+            }; // buttonFilter{}
+
+        var updateSubway = function(state){
+          if( state.activeFilter != '.mix' ) {
+            $('.subway li').addClass('dim')
+            $('.subway li'+state.activeFilter).removeClass('dim')
+          } else {
+            $('.subway li').removeClass('dim');
+          }
+          // console.log(state.activeFilter);
+
+
+          currentFilters = state.activeFilter;
+          console.log(currentFilters);
+
+        } // updateSubway()
+
+// -----------------------------------------------
+
+        // Initialize buttonFilter code
+
+        buttonFilter.init();
+
+        // Instantiate MixItUp
+
+        $('.rooms').mixItUp({
+          controls: {
+            enable: false // we won't be needing these
+          }
+        });
+
+        $('.rooms li').hover(
+
+          // toggleClass???
+          function(e){
+            $(this).siblings().addClass('unfocus');
+          },
+          function(e){
+            $(this).siblings().removeClass('unfocus');
+          }
+        ) // $('.rooms li').hover()
+
+        $('.views li').click(function(e){
+
+          if ( $(this).hasClass('grid') ) {
+            $('.subway').addClass('mobilehide')
+            $('#grid-north, #grid-south').removeClass('mobilehide')
+          } else if ( $(this).hasClass('map') ) {
+            $('#grid-north, #grid-south').addClass('mobilehide')
+            $('.subway').removeClass('mobilehide')
+          }
+
+          $(this).addClass('selected').siblings().removeClass('selected')
+
+        }) // $('.views li').click()
+
+        $('.done, .filters .select').click(function(){
+          $('.filters').toggleClass('open')
+        }) // $('.done, .select').click()
+
+// -----------------------------------------------
+
+        $('.rooms li.mix').click(function(){
+
+
+          var $this = $(this), //cache value
+          $details = $('.details'),
+          $visibleItems = $(".mix[style*='block']"), //style="display: inline-block" OR style !empty
+          filteredIndex, // = $visibleItems.filter($this).index() + 1; // convert from 0-based index to 1
+          columns = 6, // DESKTOP
+          row, position;
+
+          $.grep($visibleItems, function(e){
+            if( $(e).attr('id') == $this.attr('id') ) {
+              //console.log( $visibleItems.index( e ) )
+              //return $visibleItems.index( e )
+              filteredIndex = $visibleItems.index( e ) + 1; // convert from 0-based index to 1
+            }
+          })
+
+          updateDetails($this);
+
+          //console.log(filteredIndex)
+
+          // MOBILE
+          if (device == 'phone' || window.matchMedia("(max-width: 768px)").matches ) {
+            columns = 3
+          }
+
+          row = Math.ceil(filteredIndex / columns), //rounding up
+          position = (row*columns); //we are using after, so we don't need + 1
+
+          
+
+          if($this.hasClass('details-open')) {
+            $('#grid-north').after( $details )
+            $details.css('display', '')
+
+          } else {
+
+            if( position > $visibleItems.length ) {
+
+              $( $this.parent() ).append( $details ) //append to correct div/ul by checking parent
+
+          //     $('.mix:last').after( $details )
+            } else {
+              $($.makeArray($visibleItems)[position - 1]).after( $details ) // have to subtract 1 to account for mix of zero-based and 1-based indices...
+            }
+
+            $details.css('display', 'inline-block')
+            $('.rooms li').removeClass('details-open'); //might not be a sibling... $this.siblings()
+
+          }
+
+          $this.toggleClass('details-open');
+          $('html, body').delay(500).animate({ scrollTop: $('.details.light').offset().top}, 1000);
+
+          window.addEventListener('hashchange', function() {
+                console.log('this view\'s id is', window.location.hash.substr(1));
+          });
+
+
+        //   $this.siblings().removeClass('details-open');
+        //   $this.toggleClass('details-open');
+
+        //   if( $this.hasClass('details-open') ) {
+        //     $this.append( $('.details.dark') )
+        //   } else {
+        //     $this.removeClass('details-open');
+        //   }
+
+        });
+
+        var updateDetails = function(selector) {
+          var $this = selector,
+              $details = $('.details'),
+              room = $this.attr('id'),
+              side = room.indexOf('N') > -1 ? 'North Side' : 'South Side',
+              type, floorplan,
+              features = $this.data('features'),
+              overrides = $this.data('overrides'),
+              occupants = $this.find('.users li');
+
+          switch(true) {
+            case $this.hasClass('category-1'):
+              type = 'standing'
+              //floorplan = 'category-1'
+              break;
+
+            case $this.hasClass('category-2'):
+              type = 'lounge'
+              //floorplan = 'category-1'
+              break;
+
+            case $this.hasClass('category-3'):
+              type = 'table'
+              //floorplan = 'category-1'
+              break;
+
+            case $this.hasClass('category-4'):
+              type = 'open'
+              //floorplan = 'category-1'
+              break;
+          }
+
+          $details.attr('id', 'room-'+room)
+          $details.find('.room').text(room)
+          $details.find('.location').text(side)
+          $details.find('.details-type').text(type)
+
+          $details.find('.floorplan').attr('class', 'floorplan') //http://stackoverflow.com/a/5363310
+          $details.find('.floorplan').addClass(type)
+
+          $details.find('.amenities li:not(.h3)').remove()
+          for( i = 0; i < features.length; i++ ) {
+            //console.log(features[i])
+            $details.find('.amenities').append('<li>'+features[i]+'</li>')
+          }
+
+          if(overrides) {
+            for( i = 0; i < overrides.length; i++ ) {
+              // console.log(overrides[i])
+
+              if( overrides[i].indexOf('-') > -1 ) {
+                // console.log('remove: '+overrides[i])
+                $details.find('.amenities li:contains('+overrides[i].substring(1,overrides[i].length)+')').remove()
+              } else {
+                $details.find('.amenities').append('<li>'+overrides[i]+'</li>')
+              }
+
+            }
+          }
+
+          // console.log( occupants )
+          // console.log( occupants.length )
+          $('.occupants').empty()
+          $('.occupants').append('<li class="h3">Occupants:</li>')
+
+          for (i = 0; i < occupants.length; i++) {
+            // console.log( occupants[i] )
+            // $('.occupants').append(occupants[i])
+            $(occupants[i]).clone().appendTo( $('.occupants') )
+          }
+
+        }
+
+        // $('.check-in').click(function(){
+        //   console.log($('.roomDetails').find('h2').html(+room.display_name));          
+        //   $('.utilities').show()
+        //   $('#name-input').focus()
+        // })
+
+        $('.details .close').click(function(){
+          hideDetails()
+        })
+
+        var hideDetails =  function() {
+          var $details = $('.details');
+
+          $('#grid-north').after( $details )
+          $details.css('display', '')
+          $('.rooms').find('.details-open').removeClass('details-open');
+        }
+
+        $('.toggle, .utilities .close').click(function(){
+          $('.utilities').toggle()
+
+          // $('.utilities').toggle(function(){
+          //   $(this).css('max-height', 0)
+          //   // console.log('open')
+          // }, function(){
+          //   $(this).css('max-height', 250)
+          //   // console.log('close')
+          // })
+        })
+
+        $('#check-in').submit(function(e){
+          e.preventDefault();
+
+          var submit = true;
+
+          // check that all required fields either have .val() or .data('selected')
+          // console.log('form validation: ')
+          //console.log( $("[required]") )
+          //console.log( $("[required]").val() )
+          //console.log( $("[required]").data('selected') )
+
+          $("[required]").each(function(index){
+            var $this = $(this);
+
+            // console.log(index)
+            // console.log( $this )
+            // console.log( $this.val() )
+            // console.log( $(this).data('selected') )
+
+            if( $this.val() === "" && $this.data('selected') == "" ){
+              console.log('There was an error with your submission')
+              submit = false;
+
+              $this.css("border-color", "red")
+            }
+          })
+
+          if(submit) {
+
+            var user = $('#name-input').val(),
+                // internal = "10", //make sure to send as string, not integer
+                room = $('#room-number').data('selected'), //make sure to send as string, not integer
+                $users = $('.rooms .room-'+room+' .users');
+
+            // console.log(user)
+            // console.log(room)
+            // console.log(submit)
+
+            socket.emit('checkIn', {room : room, user: user});
+            $users.append('<li>'+sanitize(user)+'</li>')
+            $('#name-input').val("") // reset so we don't accidentally check-in the same user twice
+
+            // console.log($('#checkin-form-button'));
+            $('#checkin-form-button').addClass('confirm_popup_open');
+            $('#checkin-form-button').click();
+
+            // console.log('success')
+          }
+
+        })
+
+        function sanitize(input) {
+          return input.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+        }
+
+
+        $('#matches').on('click', 'li', function(){
+          // console.log( $(this).text() )
+          $('#name-input').val( $(this).text() )
+          $('#matches').hide()
+        })
+
+        $("#name-input").focus(function() {
+          $('#matches').show()
+        });
+
+        $('#name-input').keyup(function(){
+          var val = $(this).val();
+          if(val.length < lastVal.length) findCache = users;
+          findCache = findCache.filter(function (element, index, array) {
+            return (element.toLowerCase().indexOf(val.toLowerCase()) > -1);
+          })
+          lastVal = val;
+          cacheLength = (findCache.length);
+          if(cacheLength > 10) cacheLength = 10;
+
+          $('#matches').empty()
+          for(var i = 0;i<cacheLength;++i) {
+            $('#matches').append('<li>'+findCache[i]+'</li>')
+            // $('.matches',$namesParent).append('<li>'+findCache[i]+'</li>');
+          }
+
+        });
+
+        $("#name-input, .select").blur(function() { //.select's don't blur... http://api.jquery.com/blur/
+          // console.log( $(this).next() )
+          setTimeout(function(){
+            $(this).next().hide(); //$('#matches')
+            $('#matches').empty();
+          }, 250);
+        });
+
+        $('.select').click(function(){
+          $(this).next('.options').toggle()
+          $(this).css("border-color", "") //reset if there was an error
+        });
+
+        $('.options li').click(function(){
+          // console.log( $(this).attr('value') )
+
+          $(this).parent().prev().data('selected', $(this).attr('value'))
+          $(this).parent().prev().text($(this).text())
+          $(this).parent().toggle();
+        })
+
+        $('#wing li').click(function(){
+
+          $('#room-ids li').hide(); // http://api.jquery.com/contains-selector/
+
+          switch( $(this).attr('value') ){
+            case 'north':
+              $('#room-ids li:contains("N-") ').show()
+
+              break;
+            case 'baby':
+              $('#room-ids li:contains("B-") ').show()
+
+              break;
+            case 'south':
+              $('#room-ids li:contains("S-") ').show()
+
+              break;
+            default:
+          }
+
+          // $('#wing').toggle();
+        })
+
+        // http://css-tricks.com/snippets/jquery/make-jquery-contains-case-insensitive/
+        $.expr[":"].contains = $.expr.createPseudo(function(arg) {
+            return function( elem ) {
+                return $(elem).text().toUpperCase().indexOf(arg.toUpperCase()) >= 0;
+            };
+        });
+
+        $('#matches2').on('click', 'li', function(){
+          // console.log( $(this).text() )
+          $('#search-form input').val( $(this).text() ).submit();
+
+          $('#matches2').hide()
+        })
+
+        $("#search-form input").focus(function() {
+          // Moved to prevent ugly line from appearing $('#matches2').show()
+        });
+
+        $('#search-form input').keyup(function(){
+          var val = $(this).val()
+
+          if(val.length < lastVal2.length) findCache2 = users;
+          findCache2 = findCache2.filter(function (element, index, array) {
+            return (element.toLowerCase().indexOf(val.toLowerCase()) > -1);
+          })
+          lastVal2 = val;
+
+          cacheLength = (findCache2.length);
+          if(cacheLength > 10) cacheLength = 10;
+
+          $('#matches2').empty()
+          for(var i = 0;i<cacheLength;++i) {
+            $('#matches2').append('<li>'+findCache2[i]+'</li>')
+          }
+
+          $('.users').css('border', ''); //always re-check
+          // console.log( val )
+          // console.log( $('.users:contains('+val+')') )
+          $('.users:contains('+val+')').css('border', '1px solid red')
+
+          // doens't return multiple matches...
+          //console.log( $('.users:contains('+val+')').parent().attr('id') )
+
+          $('.subway li').removeClass('person-found')
+          $( '.subway li#'+$('.users:contains('+val+')').parent().attr('id') ).addClass('person-found')
+
+          // addClass('person-found') to matching subway element
+
+          if(val.length == 0) { //this also needs to happen if we click the 'x'... but isn't attached to the keyup event. or maybe it is, but my test's weren't foolproof
+            //remove all
+            $('.users').css('border', '')
+            $('.subway li').removeClass('person-found')
+          }
+
+          $('#matches2').show();
+        })
+
+        // $('#search-form input').change(function(){
+        //   var val = $(this).val()
+
+        //   $('.users').css('border', ''); //always re-check
+
+        //   $('.users:contains('+val+')').css('border', '1px solid red')
+        // })
+
+        $("#search-form input").blur(function() { //.select's don't blur... http://api.jquery.com/blur/
+          // console.log( $(this).next() )
+          setTimeout(function(){
+            $('#matches2').hide(); //$(this).next()
+            $('#matches2').empty();
+          }, 250);
+        });
+
+        $('#search-form').submit(function(e){
+          e.preventDefault();
+          // Save the search term
+          var searchTerm = $('#search-form :input').val();
+
+          var room = $('.subway li#'+$('.users:contains('+ searchTerm +')').parent().attr('id') );
+
+
+          if(room[0] === undefined) {
+            $('#searchResults').html(searchTerm + " can't be found, or is not checked in to a huddle room");
+            $('#search_popup').popup('show');
+            return;
+          }
+          else {
+
+            $('#' + room[0].id).click();
+            $('html, body').delay(500).animate({ scrollTop: $('.details.light').offset().top}, 1000);
+          }
+
+
+        })
+
+        $('.subway li').click(function(){
+          // console.log('open details view')
+          // console.log( $(this).attr('id') )
+          $('.rooms li#'+$(this).attr('id')).trigger('click')
+        })
+
+      }); // $.ready
+    </script>
+
+    <script src="_/js/vendor/jquery.popupoverlay.js"></script>
+    <script src="_/js/app.js"></script>
+    <script src="_/js/mixPanel.js"></script>
+
+
+  </footer>
+
+  <!-- <script src="//localhost:35729/livereload.js"></script> -->
+
+</body>
+</html>

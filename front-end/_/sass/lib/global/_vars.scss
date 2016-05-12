@@ -1,0 +1,96 @@
+$debug: true;
+
+// COLORS ---------------------------------------------------------------------
+
+$red: #da0426;
+$yellow: #ffca00;
+$green: #00af48;
+$blue: #099cd8;
+$purple: #27235e;
+
+$white: #e5e5e5;
+$gray: darken($white, 15%);
+
+$primary: $blue;
+$secondary: #074e83;
+// $tertiary:
+// $accent:
+// $accent2:
+
+$bright: #fff;
+$light: $white;
+$dark: $purple;
+
+$available-color: $green;
+$occupied-color: $red;
+$purgatory-color: $yellow;
+
+$bg-color: $bright;
+$text-color: $purple;
+
+$link-color: $purple;
+$link-hover-color: $link-color;
+
+// FONTS ----------------------------------------------------------------------
+
+$sans-serif: Avenir, $helvetica;
+
+$base-font-family: $sans-serif;
+$header-font-family: $base-font-family;
+
+$font-size: 15; //do not add 'px'
+$base-font-size: em($font-size);
+$retina-font-size: 44;
+$line-height: em(18, $font-size); //1.2
+
+$h1: 42 ; //2.8
+$h2: 36 ; //2.4
+$h3: 16 ; //1.0667
+$h4: 15 ; //1
+$h5: 12 ; //.8
+
+$mobile-h1: 20 ;
+
+
+// GRID -----------------------------------------------------------------------
+
+$mobile: 480;
+$tablet: 768;
+$desktop: 960;
+
+$mobile-breakpoint: em($mobile);
+$tablet-breakpoint: em($tablet);
+$desktop-breakpoint: em($desktop);
+
+$desktop-columns: 12;
+$tablet-columns: 10;
+$mobile-columns: 6;
+
+// https://github.com/thoughtbot/neat#getting-started
+@import "neat/neat-helpers";
+
+// Change the grid settings
+// $column: 90px;
+$gutter: em(20, $font-size);
+// $grid-columns: 12;
+$max-width: em($desktop);
+
+$visual-grid-color: red;
+// $visual-grid: true;
+
+// $mobile-max: em($tablet - 1);
+$mobile-max: 767px;
+$tablet-max: em($desktop - 1);
+
+// Define your breakpoints
+
+$desktop: new-breakpoint(min-width em($desktop) $desktop-columns); //
+$tablet-desktop: new-breakpoint(min-width em($tablet) min-device-width em($tablet) $desktop-columns);
+// $tablet: new-breakpoint(min-device-width em($tablet) max-width $tablet-max $tablet-columns); // DOESN'T WORK
+$mobile: new-breakpoint(max-device-width $mobile-max $mobile-columns); //
+
+$phone-retina: new-breakpoint(max-device-width $mobile-max -webkit-min-device-pixel-ratio 1.6 $mobile-columns);
+
+@import "neat/neat";
+
+// Z-INDEX --------------------------------------------------------------------

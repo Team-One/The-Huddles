@@ -1,0 +1,39 @@
+@import "lib/lib";
+
+@import "partial/utilities";
+@import "partial/header";
+@import "partial/filter";
+@import "partial/footer";
+
+
+@import "module/subway";
+@import "module/grid"; //grid-view?
+@import "module/detail";
+@import "module/legend";
+@import "module/popup";
+
+.mobileonly {
+  display: none !important;
+
+  @include phone {
+    display: block !important;
+  }
+}
+
+@include phone {
+  .mobilehide {
+    // display: none !important; /*display:none breaks prevents updateSubway() from being called */
+
+    // visibility: hidden;
+    // height: 0 !important;
+    // padding: 0 !important;
+
+    position: absolute; top: -9999px; left: -9999px; /*wish I didn't have to do it this way...*/
+  }
+}
+
+[hidden] {
+  display: none;
+}
+
+@import "module/legend-mobile";

@@ -1,0 +1,14 @@
+#footer {
+  background: $bright;
+
+  @include phone {
+    background: none;
+    padding: 0 $gutter;
+  }
+}
+
+.copy {
+  @include pad(1em 0 1em 3.8em);
+  background: url(img/logo.svg) no-repeat;
+  background-size: 3em;
+}

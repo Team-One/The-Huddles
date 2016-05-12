@@ -1,0 +1,304 @@
+.details {
+  display: none;
+
+  // .mixing & { // don't use &, .mixing & because only one needs the important flag
+  //   display: none !important; //important to override inline css
+  // }
+
+  margin-top: $gutter;
+@include phone {
+  margin-top: 0
+}
+
+  margin-bottom: $gutter;
+  @include fill-parent; // width: 100%;
+  font-size: 15px; //$font-size + 'px'
+
+  &.light {
+    &, &:before, &:after {
+      background: $bright;
+
+      @include phone {
+        background: $light;
+      }
+
+    }
+  }
+
+  &.dark {
+    &, &:before, &:after {
+      background: rgba(#00234a, .9); //#00234a;
+    }
+
+    color: $light;
+  }
+
+  position: relative; //for before pseudo-element
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  &:before {
+    left: -100%;
+  }
+
+  &:after {
+    top: 0;
+    right: -100%;
+  }
+
+  .container {
+    //position: relative; //for before pseudo-element
+    @include pad(em(50, $font-size) 0 em(33, $font-size));
+
+    @include phone {
+      // padding-top: $gutter;
+      @include pad ($gutter $gutter/2)
+    }
+
+    //overflow: hidden; //animate with: max-height: 0; padding: 0;
+    //max-height: 550px; //Desktop???
+    //@include transition(all, 1s);
+
+  }
+
+  .details-header { //css-tricks.com/almanac/properties/v/vertical-align/
+    padding-bottom: em(24, $font-size);
+@include tablet-desktop {
+    border-bottom: 1px solid; //em(1px, $font-size)
+}
+
+    @include phone {
+      width: 50%;
+      float: right;
+
+      .room, .location, .details-type {
+        display: block;
+      }
+
+      .room {
+        margin-bottom: $gutter/2;
+      }
+    }
+  }
+
+  .room { // need a better selector
+    padding-right: em(14, $h2);
+    margin-right: em(14, $h2);
+
+    line-height: 1;
+@include tablet-desktop {
+    border-right: 1px solid; //em(1px, $font-size)
+}
+  }
+
+  // .col {
+    //@include span-columns(4);
+    // margin-right: 0;
+
+
+.col1 {
+  border-right: 1px solid;
+}
+
+.col2 {
+  border-left: none;
+}
+
+@include tablet-desktop {
+    .col1 {
+      width: 36%;
+      // border-right: 1px solid;
+    }
+
+    .col2 {
+      width: 64%;
+      // margin-left: 45px;
+    }
+  // }
+}
+
+@include phone {
+  .col1 {
+    width: 45%;
+  }
+}
+
+  .floorplan, .check-in {
+    max-width: 300px; //can we use ems
+@include tablet-desktop {
+    margin-top: 45px; //can we use ems
+    margin-right: 45px; //can we use ems
+}
+
+    margin-right: 25px; //can we use ems MOBILE!!!
+  }
+
+  .floorplan {
+    // @include span-columns(4);
+    // margin-right: 45px;
+  }
+
+  .check-in {
+    float: left;
+    clear: left;
+
+    @extend .h3;
+    @include fill-parent;
+    //@include span-columns(4);
+    @include pad(16px 25px); //can we use ems
+    border: 1px solid; //em(1px, $font-size)
+    text-align: center;
+    cursor: pointer;
+
+  //   @include transition (all .8s $ease-out-quad);
+  }
+
+  // ul {
+  //   @include clearfix;
+    // float: left;
+  //   list-style-type: none;
+
+    ul .h3 {
+      @include pad(em(16, $h3) em(45, $h3));
+      margin-top: 0;
+      margin-bottom: 8px; //can we use ems
+      border-bottom: 1px solid; //em(1px, $font-size)
+    }
+
+    li {
+      @include fill-parent;
+      @include pad(em(12, $font-size) em(50, $font-size));
+      margin-top: $gutter/2;
+    }
+  // }
+
+  ul.amenities,
+  ul.occupants {
+    list-style-type: none;
+  //   li:not(.h3) {
+  //     padding-left: em(45, $font-size);
+  //   }
+  }
+
+  ul.amenities {
+    // border-left: 1px solid;
+    .white-wall {
+
+    }
+
+    .ethernet {
+
+    }
+
+    .pin-board {
+
+    }
+
+    .tv {
+
+    }
+
+    .closed-space {
+
+    }
+
+    .phone {
+
+    }
+
+    .curtain {
+
+    }
+  }
+
+  ul.occupants {
+    border-left: none;
+  //   li {
+
+  //   }
+
+// @include tablet-desktop {
+//     .h3 {
+//       padding-left: 0
+//     }
+// }
+
+  }
+
+}
+
+.details.light {
+//   &:before {
+//     content: "";
+//     @include triangle(24px, $red, up);
+
+//   }
+  .close {
+    &:before, &:after {
+      background: $purple;
+    }
+
+    &:hover {
+      &:before, &:after {
+        background: $yellow;
+      }
+    }
+  }
+
+  .floorplan {
+    padding-bottom: 75%;
+    border: 1px solid $purple; //em(1px, $font-size)
+  }
+
+  .check-in {
+    background: $purple;
+    color: $light;
+    &:hover {
+      background: tint($purple, 5);
+      color: $bright;
+    }
+  }
+
+  ul.occupants li:not(.h3) {
+    background: url(img/users/dark.svg) no-repeat;
+  }
+}
+
+.details.dark {
+//   &:before {
+//     content: "";
+//     @include triangle(24px, $red, up);
+//     margin-top: -10px;
+//   }
+  .check-in {
+    &:hover {
+      background: $purple;
+    }
+  }
+
+  ul.amenities .data {
+
+  }
+  ul.amenities .phone {
+
+  }
+  ul.amenities .appletv {
+
+  }
+  ul.amenities .display {
+
+  }
+  ul.amenities .closed {
+
+  }
+
+  ul.occupants li:not(.h3) {
+    background: url(img/users/light.svg) no-repeat;
+    // background-size: 80%;
+  }
+}

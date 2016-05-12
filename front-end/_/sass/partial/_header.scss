@@ -1,0 +1,168 @@
+body {
+  background: $light url('img/Huddle-bg.jpg') no-repeat center -65px;
+}
+
+#header {
+  // height: 210px;
+
+  background: rgba(#00234a, .9);
+  color: $light;
+
+  border-bottom: em(1, $font-size) solid $blue; // accounts for retina
+}
+
+.banner {
+  @include span-columns(6);
+  @include shift(3);
+  margin-right: 0 !important;
+
+  background: url(img/logo.svg) no-repeat center -1em;
+  background-size: em(90);
+  background-position-y: 1rem;
+
+  text-align: center;
+  letter-spacing: em(3);
+
+  @include tablet {
+    @include span-columns(8);
+    @include shift(1);
+  } // .banner (tablet)
+
+  @include phone {
+    @include span-columns(12);
+    @include shift(0);
+    background: $bright url(img/logo.svg) no-repeat;
+    background-size: em(65);
+    background-position-x: .5rem;
+    background-position-y: .5rem;
+  } // .banner (mobile)
+
+  .logo {
+    @include pad(em(78, $h1) 0 em(12, $h1));
+    border-bottom: 1px solid $blue; //em(1, $font-size)
+    margin-top: 2rem;
+
+// keep together ------------------------------------------
+    position: relative;
+    &:after {
+      content: "";
+
+      @include position(absolute, auto auto -7px 50%);
+      margin-left: -6px;
+
+      @include size(12px);
+      border-radius: 50%;
+
+      background: rgb(0, 35, 74);
+      border: 1px solid $blue; //em(1, $font-size)
+
+      @include phone {
+        display: none; //@include appearance(none);
+      } // .banner .logo:after (mobile)
+    } // .banner .logo:after
+// end keep together --------------------------------------
+
+    .light {
+      color: $blue;
+      font-weight: 300;
+    } // .banner .logo .light
+
+  } // .banner .logo
+
+  .tagline {
+    display: block;
+    @include pad(em(24, 18) 0 em(28, 18));
+    // font-family: OpenSans, $helvetica;
+
+  } // .banner .tagline
+} // .banner
+
+.toggle {
+
+  span {
+    display: block;
+    height: 100%;
+    background-clip: content-box;
+    @include pad(10px 8px);
+
+    background-position-y: -2px;
+
+    @include background-image(linear-gradient($light 1px, transparent 1px)); //http://lea.verou.me/css3patterns/#lined-paper
+    background-size: 100% 7px;
+
+    @include phone {
+      @include background-image(linear-gradient($purple 1px, transparent 1px)); //http://lea.verou.me/css3patterns/#lined-paper
+    } // .toggle .span (mobile)
+
+  } // .toggle span
+
+  @include span-columns(1);
+  @include shift(2);
+  @include omega;
+
+  margin-top: 10px;
+  @include size(45px);
+
+@include phone-retina {
+  @include size(80px); //double
+  top: 44px !important;
+  right: 40px !important;
+
+  span {
+    @include background-image(linear-gradient($purple 3px, transparent 3px)); //http://lea.verou.me/css3patterns/#lined-paper
+    background-size: 100% 22px;
+  }
+}
+
+  border: 1px solid; //em(1, $font-size)
+  font: 0/0 a; // @include hide-text; don't want 'color: transparent'
+
+  @include interactive; // @extend %interactive
+
+  &:hover {
+    color: $yellow;
+    span {
+      @include background-image(linear-gradient($yellow 1px, transparent 1px)); //http://lea.verou.me/css3patterns/#lined-paper
+      // background-size: 100% 7px;
+    } // .toggle:hover span
+  } // .toggle:hover
+
+  @include tablet {
+    @include shift(0);
+  } // .toggle (tablet)
+
+} // .toggle
+
+@include phone {
+  body {
+    background-image: none;
+  }
+
+  #header {
+    border-bottom-color: $dark;
+
+    &> .container {
+      position: relative; //for toggle
+      margin: 0 auto;
+    }
+  }
+
+  .banner .logo {
+    @include pad(1em 0 .7em $line-height);
+    color: $dark;
+  }
+
+  .banner .tagline {
+    display: none;
+  }
+
+  .toggle {
+    position: absolute;
+    top: 2px;
+    right: 8px;
+
+    color: $dark;
+
+    border: none;
+  }
+} // @include media($mobile)

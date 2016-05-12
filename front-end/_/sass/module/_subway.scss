@@ -1,0 +1,340 @@
+.subway {
+  background: rgba(#00234a, .9);
+  color: $light;
+
+  overflow: hidden;
+
+  @include pad(em(34, $font-size) 0); //em(20,$font-size)
+
+  @include phone {
+    padding-top: em(80); // accounts for retina
+  }
+
+  @include tablet-desktop {
+    .container {
+      min-width: em(960, $font-size);
+    }
+  }
+
+  .marker {
+    @extend h5;
+    color: $primary;
+    text-transform: uppercase;
+    white-space: nowrap;
+
+    &.north,
+    &.south {
+      @include pad(10px 0);
+
+    } // .subway .marker.north, .subway .marker.south
+
+    &.north {
+      @include span-columns($desktop-columns);
+      margin-bottom: em(30, $h5);
+    } // .subway .marker.north
+
+    &.kitchen,
+    &.front-desk {
+      @include span-columns(2);
+      @include pad(18px);
+      margin-top: em(20, $h5);
+      margin-bottom: em(20, $h5);
+      border: 1px dashed; //em(1, $font-size)
+
+      text-align: center;
+
+    } // .subway .marker.kitchen, .subway .marker.front-desk
+
+    &.line {
+      @include span-columns(8);
+      padding-top: em(55, $font-size);
+      border-bottom: 1px dashed; //em(1, $font-size)
+
+    } // .subway .marker.line
+
+    &.front-desk {
+      @include omega;
+    } // .subway .marker.front-desk
+
+    &.south,
+    &.all-agency {
+      @include span-columns(2);
+
+      @include tablet-desktop {
+        margin-top: $gutter;
+      }
+    } // .subway .marker.south, .subway .marker.all-agency
+
+    &.south {
+      right: 0;
+    } // .subway .marker.south
+
+    &.all-agency {
+      margin-left: 53%;
+      padding-top: em(10, $h5);
+      padding-bottom: em(30, $h5);
+      background: url(img/dotted-arrow.svg) no-repeat center 2.4em;
+      background-size: 24px; //can we use ems?
+      text-align: center;
+
+    } // .subway .marker.all-agency
+
+  } // .subway .marker --------------------------------------------
+
+  ul {
+    list-style-type: none;
+  }
+
+  ul.north,
+  ul.south {
+    @include span-columns($desktop-columns);
+    // @include omega;
+    a {
+      color: #fff;
+    }
+  }
+
+  ul.north {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAYAAADgzO9IAAAAE0lEQVQIW2Nk923+z4AFMA6kBAChygsLkoq5hQAAAABJRU5ErkJggg==) repeat-x 0 38px; //http://www.patternify.com/
+
+  } // ul.north -------------------------------------------
+
+  li a{
+    cursor: pointer;
+    @extend .h4;
+    float: left;
+    position: relative;
+    @include size(47px 65px); //can we use ems?
+
+    text-align: center;
+
+    @include phone {
+      height: em(72, $font-size); // accounts for retina
+    }
+
+    @include transition (opacity .8s $ease-out-quad);
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    &:after {
+      display: block;
+      content: "";
+      margin: 0 auto;
+      @include size(16); //can we use ems?
+
+      -webkit-border-radius: 50%;
+         -moz-border-radius: 50%;
+              border-radius: 50%;
+
+      background: $dark;
+      border: 7px solid $gray; //can we use ems?
+      margin-top: 8px; //can we use ems?
+
+      @include transition (all .8s $ease-out-quad); //http://bourbon.io/docs/#timing-functions
+
+      @include phone {
+        margin-top: 0;
+        @include size(em(36)); // accounts for retina
+        border: em(8) solid $gray; // accounts for retina
+      }
+
+    } // li:after -----------------------------------------
+
+    &.available:after {
+      border-color: $available-color;
+    }
+
+    &.occupied:after {
+      border-color: $occupied-color;
+    }
+
+    &.purgatory:after {
+      border-color: $purgatory-color;
+    }
+
+    &.person-found { //&:hover,
+      &.available:after {
+        border-color: tint($available-color, 25%);
+      }
+
+      &.occupied:after {
+        border-color: tint($occupied-color, 25%);
+      }
+
+      &.purgatory:after {
+        border-color: tint($purgatory-color, 25%);
+      }
+
+      &:before {
+        position: absolute;
+        bottom: 2px; //can we use ems?
+        left: 50%;
+        margin-left: -22px; //can we use ems?
+        display: block;
+        content: "";
+
+        @include size(42); //can we use ems?
+
+        border-radius: 50%;
+        border: 1px dashed; //can we use ems?
+
+        @include phone {
+          @include size(73); //can we use ems?
+          left: 20px; //can we use ems?
+          top: -10px; //can we use ems?
+        }
+
+      }
+    } // li:hover -----------------------------------------
+  } // li -------------------------------------------------
+
+  // @include tablet-desktop {
+  @media screen and (min-device-width: 768px) and (min-width: 768px) { // desktop & tablet
+    #N-1, #S-1 {
+      margin-left: -10px; //can we use ems?
+    }
+
+    #N-2, #N-5, #N-9, #N-12 {
+      margin-left: em(33, $font-size); //1.2em = 18px
+    }
+
+    #N-18 {
+      margin-right: -10px; //can we use ems?
+    }
+
+    ul.south {
+      position: relative;
+    }
+
+    #S-15, #S-16 {
+      position: absolute;
+      left: 609px; //74%; //can we use ems?
+
+      width: 76px; //can we use ems?
+      text-align: right;
+
+      span {
+        display: block;
+        margin-top: $gutter;
+      }
+
+      &:after {
+        margin-top: -25px; //can we use ems?
+        margin-left: 0;
+      }
+
+      &:hover:before {
+        left: 20%;
+        bottom: 15px; //can we use ems?
+      }
+    }
+
+    #S-15 {
+      top: 64px; //can we use ems?
+    }
+
+    #S-16 {
+      top: 111px; //can we use ems?
+    }
+
+    #S-17 {
+      margin-left: 135px; //can we use ems?
+    }
+  } // .subway @include media(min-width 768px)
+
+  @include phone {
+
+    .container {
+      position: relative;
+    }
+
+    .marker.north,
+    .marker.south,
+    ul.north,
+    ul.south {
+      @include span-columns(6);
+    }
+
+    .marker.south,
+    ul.south {
+      @include omega;
+    }
+
+    .marker.north,
+    .marker.south {
+      position: absolute;
+      top: 0;
+      background-image: none !important;
+      font-size: em(18); // accounts for retina
+      text-align: center;
+
+    }
+
+    .marker.kitchen,
+    .marker.front-desk,
+    .marker.line,
+    .marker.all-agency {
+      display: none;
+    }
+
+    ul.north,
+    ul.south {
+      margin-top: em(48); // accounts for retina
+
+      background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAYAAADgzO9IAAAAE0lEQVQIW2Nk923+z4AFMA6kBAChygsLkoq5hQAAAABJRU5ErkJggg==); //http://ptrn.it/1nMn0RV
+      background-repeat: repeat-y;
+
+      // background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAYAAADgzO9IAAAAE0lEQVQIW2Nk923+z4AFMA6kBAChygsLkoq5hQAAAABJRU5ErkJggg==) repeat-y 68% 0;
+
+      @include phone-retina {
+        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGElEQVQYV2Nk923+z0AEYBxViC+UqB88APnYEmeE+HMjAAAAAElFTkSuQmCC); //http://ptrn.it/1nMmWBs //http://www.askapache.com/online-tools/base64-image-converter/
+      }
+
+      li {
+        @include span-columns(2 of 3); //1 of 3
+        // @include shift(1);
+
+      }
+
+      span {
+        margin-top: .8em;
+        font-size: em(20); // accounts for retina
+      }
+    }
+
+    ul.north {
+      background-position-x: 72%; /*optimized for 480px wide*/
+      border-right: em(1, $font-size) dashed $blue; // accounts for retina
+
+      li {
+        margin-left: 18%;
+        &:after {
+          margin-right: 0;
+        }
+      }
+
+      span {
+        float: left;
+      }
+    }
+
+    ul.south {
+      // background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAYAAADgzO9IAAAAE0lEQVQIW2Nk923+z4AFMA6kBAChygsLkoq5hQAAAABJRU5ErkJggg==) repeat-y 40% 0; //http://www.patternify.com/
+      background-position-x: 26%; /*optimized for 480px wide*/
+
+      li {
+        margin-left: 16%;
+        &:after {
+          margin-left: 0;
+        }
+      }
+      span {
+        float: right;
+      }
+    }
+
+  } // .subway @include media($mobile)
+
+} // .subway

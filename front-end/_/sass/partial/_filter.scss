@@ -1,0 +1,253 @@
+.filters {
+
+  .h4 {
+    display: block;
+    margin-top: em(20, $h4);
+    margin-bottom: em(10, $h4);
+    text-transform: capitalize;
+
+  } // .filters .h4
+
+  ul {
+    @include clearfix;
+    list-style-type: none;
+    border: em(1, $font-size) solid; // accounts for retina
+
+  } // .filters ul
+
+  li {
+    float: left;
+
+    @include pad(em(10)); // accounts for retina
+
+    width: em(125, $font-size);
+
+    text-align: center;
+    white-space: nowrap;
+
+    @include interactive; // @extend %interactive
+    &.selected {
+      background: $purple;
+      color: $light;
+    }
+    &:hover {
+      background: $yellow;
+      color: $gray;
+    }
+  } // .filters li
+
+  li:not(:last-child) {
+    border-right: 1px solid; //em(1, $font-size)
+    @include phone {
+      border-right: none;
+    }
+  } // .filters li:not(:last-child)
+} // .filters
+
+.type {
+  float: left;
+}
+
+.status, .views {
+  float: right;
+}
+
+@include phone {
+  .filters {
+    position: absolute;
+    top: 0;
+    @include fill-parent; // width: 100%;
+
+    z-index: 10;
+  }
+
+  .filters .container {
+    display: none;
+    background: rgba(black,.80)
+  }
+
+  .filters.open .container {
+    display: block;
+  }
+
+  .filters .h4 {
+    margin: 0;
+    @include pad(1em);
+    background: black;
+    color: $light;
+    text-transform: uppercase;
+  }
+
+  .filters li {
+    float: none;
+    width: auto;
+    color: $light;
+  }
+
+  .type, .status {
+    float: none;
+  }
+
+  .type {
+    border-top:none !important;
+    border-left:none !important;
+    border-right:none !important;
+    border-bottom: em(1, $font-size) solid #555 !important; // accounts for retina
+  }
+
+  .status {
+    margin: 1em auto;
+    width: 70%;
+    max-width: em(320); // accounts for retina
+
+    border-color: #555 !important;
+  }
+
+  .views li {
+    float: left;
+  }
+
+  .status li {
+    width: 50%;
+    float: right;
+  }
+
+  .type li {
+    margin-left: $gutter;
+    padding: em(14) em(10) em(12) em(30); // accounts for retina
+
+    text-align: left !important;
+  }
+
+  .type li:not(:last-child) {
+    border-bottom: em(1, $font-size) solid #555; // accounts for retina
+
+  }
+
+  .type li:hover {
+    background: none;
+  }
+
+  .status li:hover,
+  .status li.selected {
+    background-color: #555
+  }
+
+  .type li.selected {
+    background: url(img/check.svg) no-repeat left center;
+    background-size: em(20); // accounts for retina
+  }
+
+  .done {
+    display: block;
+    margin: em(20) auto; // accounts for retina
+    padding: em(10); // accounts for retina
+    width: 30%;
+    max-width: em(140); // accounts for retina
+
+    color: $light;
+    text-align: center;
+
+    border: em(1, $font-size) solid #555; // accounts for retina
+
+    cursor: pointer;
+  }
+
+} // @include media($mobile)
+
+.filters .select, .views {
+  margin: em(10); // accounts for retina
+}
+
+.filters .select {
+  min-width: em(190); // accounts for retina
+  border-color: $purple;
+}
+
+
+.open .select {
+  background-image: url(img/dropdown-open.svg);
+  &:hover {
+    background-image: url(img/dropdown-open.svg);
+  }
+}
+
+
+li.map {
+  padding-top: 0;
+  // padding-bottom: 4px;
+}
+
+.pin, .dots {
+  display: block;
+  font: 0/0 a;
+}
+
+.pin {
+  margin-top: 8px; //can we do ems?
+
+  @include size(24px);
+
+  border-radius: 50% 50% 50% 0;
+  border: 2px solid $purple; //can we do ems?
+
+  @include phone-retina {
+    margin-top: 15px; //can we do ems?
+    @include size(74px);
+    border-width: 4px; //double
+  }
+
+  transform: rotate(-45deg);
+  &:after {
+    content: '';
+
+    @include size(7px);
+
+    margin: 5px 0 0 -6px;
+    border: 2px solid $purple; //can we do ems?
+    position: absolute;
+    border-radius: 50%;
+
+    @include phone-retina {
+      @include size(34px);
+      margin: 12px 0 0 -20px; // sort of double
+      border-width: 4px; //double
+    }
+  }
+}
+
+li:hover .pin,
+li.selected .pin {
+  border-color: $light;
+  &:after {
+    border-color: $light;
+  }
+}
+
+.dots {
+  @include size(23px);
+  background-image: repeating-radial-gradient(transparent 2px, $purple 2px, $purple 3px, transparent 4px, transparent 12px);
+  background-size: 8px 8px;
+
+  @include phone-retina {
+    @include size(60px); //sort of double
+    background-image: repeating-radial-gradient(transparent 6px, $purple 6px, $purple 8px, transparent 9px, transparent 24px);
+    background-size: 20px 20px; //sort of double
+  }
+}
+
+li:hover .dots,
+li.selected .dots {
+  background-image: repeating-radial-gradient(transparent 2px, $light 2px, $light 3px, transparent 4px, transparent 12px);
+  background-size: 8px 8px;
+
+  @include phone-retina {
+    background-image: repeating-radial-gradient(transparent 6px, $light 6px, $light 8px, transparent 9px, transparent 24px);
+    background-size: 20px 20px; //sort of double
+  }
+
+}
+
+.subway .dim {
+  opacity: .15;
+}
