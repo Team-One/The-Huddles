@@ -1,5 +1,7 @@
-# huddle-tutorial
+# Huddle Tutorial
 Huddle showing steps to set up a system of your own. The files above are the 3d printable files for the Moteino Base Station box that sits on top of the Windows machine.
+
+![Schematic](https://github.com/Team-One/The-Huddles/blob/master/images/motieno-sensor.jpg)
 
 
 
@@ -96,7 +98,7 @@ Windows Port Driver
 Your Arduino port will be grayed out without installing. Download the one that says Windows 7/8/8.1/10
 
 
-![Schematic](https://github.com/dplumly/huddle-tutorial/blob/master/images/image3.png)
+![Schematic](https://github.com/Team-One/The-Huddles/blob/master/images/image3.png)
 
 <br>
 <br>
@@ -140,7 +142,7 @@ First thing we will want to do is get the computer or Base Station setup. In our
 Now that we have all the programs installed we can move on to the Arduino or more specific, the Moteino. We will start by building out the hardware. Here is a Fritzing of how we will hook this up (do not forget to solder on the antenna sold with the Moteino). 
 
 
-![Schematic](https://github.com/dplumly/huddle-tutorial/blob/master/images/image4.jpg)
+![Schematic](https://github.com/Team-One/The-Huddles/blob/master/images/image4.jpg)
 
 <br>
 <br>
@@ -152,7 +154,7 @@ Now that we have all the programs installed we can move on to the Arduino or mor
 
 Before we actually load the sketch onto the board we need to install the necessary arduino libraries into the libraries folder. Here is a link if you need more information on how to do so, https://www.arduino.cc/en/Guide/Libraries. We will use the FTDI programmer to load the sketch on this Moteino. The sketch is called MoteinoGate.ino. We are only going to program one node in this example, if you want to program more you will change the “NODEID” to a different number as shown in the picture below. 
 
-![Schematic](https://github.com/dplumly/huddle-tutorial/blob/master/images/image1.png)
+![Schematic](https://github.com/Team-One/The-Huddles/blob/master/images/image1.png)
 
 <br>
 <br>
@@ -166,7 +168,7 @@ Before we actually load the sketch onto the board we need to install the necessa
 Now that we have the motion sensor all hooked up and the programmed we can setup the Moteino Base Station. We need to load ArduinoBaseGate.ino on to the Moteino. This we can just use a mini USB cable to load the sketch. Make note of the COM PORT you are on because this will have to match the same in the huddle-echo.py script. (just change the COM PORT in the python script). Picture below.
 
 
-![Schematic](https://github.com/dplumly/huddle-tutorial/blob/master/images/image6.png)
+![Schematic](https://github.com/Team-One/The-Huddles/blob/master/images/image6.png)
 
 <br>
 <br>
@@ -192,7 +194,7 @@ Now open up AlwaysUp and click on the gear icon with the plus. The screenshots b
 
 <strong> General: </strong>
 
-![Schematic](https://github.com/dplumly/huddle-tutorial/blob/master/images/image5.png)
+![Schematic](https://github.com/Team-One/The-Huddles/blob/master/images/image5.png)
 
 
 <br>
@@ -206,7 +208,7 @@ Now open up AlwaysUp and click on the gear icon with the plus. The screenshots b
 
 <strong> Logon: </strong>
 
-![Schematic](https://github.com/dplumly/huddle-tutorial/blob/master/images/image8.png)
+![Schematic](https://github.com/Team-One/The-Huddles/blob/master/images/image8.png)
 
 
 <br>
@@ -220,7 +222,7 @@ Now open up AlwaysUp and click on the gear icon with the plus. The screenshots b
 
 <strong> Restart: </strong>
 
-![Schematic](https://github.com/dplumly/huddle-tutorial/blob/master/images/image9.png)
+![Schematic](https://github.com/Team-One/The-Huddles/blob/master/images/image9.png)
 
 
 <br>
@@ -234,7 +236,7 @@ Now open up AlwaysUp and click on the gear icon with the plus. The screenshots b
 
 <strong> Start Up: </strong>
 
-![Schematic](https://github.com/dplumly/huddle-tutorial/blob/master/images/image2.png)
+![Schematic](https://github.com/Team-One/The-Huddles/blob/master/images/image2.png)
 
 
 <br>
@@ -247,7 +249,7 @@ Now open up AlwaysUp and click on the gear icon with the plus. The screenshots b
 
 <strong> Extras: </strong>
 
-![Schematic](https://github.com/dplumly/huddle-tutorial/blob/master/images/image7.png)
+![Schematic](https://github.com/Team-One/The-Huddles/blob/master/images/image7.png)
 
 
 <br>
